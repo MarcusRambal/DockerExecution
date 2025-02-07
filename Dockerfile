@@ -1,10 +1,6 @@
 
 FROM docker:dind
 
-
-RUN apt-get update && apt-get install -y git
-
-
 WORKDIR /app
 RUN git clone https://github.com/MarcusRambal/DockerScripts.git
 
