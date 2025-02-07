@@ -1,1 +1,43 @@
+version: "3.8"
+
+services:
+  javascript:
+    image: node:18
+    container_name: js_app
+    volumes:
+      - ./app/javascript:/app
+    working_dir: /app
+    command: ["node", "main.js"]
+
+  java:
+    image: openjdk:17
+    container_name: java_app
+    volumes:
+      - ./app/java:/app
+    working_dir: /app
+    command: ["javac", "Main.java", "&&", "java", "Main"]
+
+  python:
+    image: python:3.11
+    container_name: python_app
+    volumes:
+      - ./app/python:/app
+    working_dir: /app
+    command: ["python", "main.py"]
+
+  ruby:
+    image: ruby:3.2
+    container_name: ruby_app
+    volumes:
+      - ./app/ruby:/app
+    working_dir: /app
+    command: ["ruby", "main.rb"]
+
+  c:
+    image: gcc:latest
+    container_name: c_app
+    volumes:
+      - ./app/c:/app
+    working_dir: /app
+    command: ["/bin/sh", "-c", "gcc main.c -o main && ./main"]
 
