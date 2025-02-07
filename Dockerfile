@@ -1,11 +1,14 @@
-
 FROM docker:dind
+
+
+RUN apt-get update && apt-get install -y git
+
 
 WORKDIR /app
 RUN git clone https://github.com/MarcusRambal/DockerScripts.git
 
+COPY runContainer.sh/runContainer.sh
+RUN chmod +x /runContainer.sh
 
-WORKDIR /app/proyecto
 
-
-CMD ["bash"]
+CMD ["/runContainer.sh"]
