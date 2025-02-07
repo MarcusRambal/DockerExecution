@@ -1,7 +1,7 @@
 FROM docker:dind
 
 
-RUN apt-get update && apt-get install -y git
+RUN apk add --no-cache git
 
 
 WORKDIR /app
