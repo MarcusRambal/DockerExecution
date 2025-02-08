@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Variables
 REPO_URL="https://github.com/MarcusRambal/DockerScripts.git"
 APP_DIR="app"
 
