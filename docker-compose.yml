@@ -3,51 +3,46 @@ services:
     image: node:18
     container_name: js_app
     volumes:
+      - ./outputs:/outputs
       - ./app/javascript:/app
-      - ./app/results.txt:/app/results.txt
     working_dir: /app
-    command: ["node", "main.js"]
+    command: sh -c "node main.js > /outputs/javascript_output.txt"
 
   typescript:
     image: node:latest
     container_name: ts_app
     volumes:
+      - ./outputs:/outputs
       - ./app/typescript:/app
-      - ./app/results.txt:/app/results.txt
     working_dir: /app
-    command: ["sh", "-c", "npm install -g typescript && tsc main.ts && node main.js"]
+    command: >
+      sh -c "npm install -g typescript && tsc main.ts && node main.js > /outputs/typescript_output.txt"
 
   python:
     image: python:3.11
     container_name: python_app
     volumes:
+      - ./outputs:/outputs
       - ./app/python:/app
-      - ./app/results.txt:/app/results.txt
     working_dir: /app
-    command: ["python", "main.py"]
+    command: ["sh", "-c", "python main.py > /outputs/python_output.txt"]
 
   ruby:
     image: ruby:3.2
     container_name: ruby_app
     volumes:
+      - ./outputs:/outputs
       - ./app/ruby:/app
-      - ./app/results.txt:/app/results.txt
     working_dir: /app
-    command: ["ruby", "main.rb"]
+    command: ["sh", "-c", "ruby main.rb > /outputs/ruby_output.txt"]
 
   c:
     image: gcc:latest
     container_name: c_app
     volumes:
+      - ./outputs:/outputs
       - ./app/c:/app
-      - ./app/results.txt:/app/results.txt
     working_dir: /app
-    command: ["/bin/sh", "-c", "gcc main.c -o main && ./main"]
+    command: ["/bin/sh", "-c", "gcc main.c -o main && ./main > /outputs/c_output.txt"]
 
-  aggregator:
-    image: busybox
-    container_name: aggregator
-    volumes:
-      - ./app/results.txt:/app/results.txt
-    command: ["sh", "-c", "cat /app/results.txt"]
 
