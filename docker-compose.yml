@@ -13,7 +13,7 @@ services:
     container_name: ts_app
     volumes:
       - ./outputs:/outputs
-      - .app/typescript:/app
+      - ./app/typescript:/app
     working_dir: /app
     command: sh -c "npm install && npm run build && node dist/main.js > /outputs/typescript_output.txt"
 
