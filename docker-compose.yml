@@ -11,6 +11,7 @@ services:
   Typescript:
     build: ./typescript
     volumes:
+      - ./outputs:/outputs
       - ./typescript:/app
     working_dir: /app
     command: ["npm", "run", "start"]
