@@ -1,27 +1,28 @@
-
 services:
   javascript:
     image: node:18
     container_name: js_app
     volumes:
       - ./app/javascript:/app
+      - ./app/results.txt:/app/results.txt
     working_dir: /app
     command: ["node", "main.js"]
 
   typescript:
     image: node:latest
     container_name: ts_app
-    working_dir: /app
     volumes:
       - ./app/typescript:/app
-    command: >
-      sh -c "npm install -g typescript && tsc main.ts && node main.js"
+      - ./app/results.txt:/app/results.txt
+    working_dir: /app
+    command: ["sh", "-c", "npx tsc main.ts && node main.js"]
 
   python:
     image: python:3.11
     container_name: python_app
     volumes:
       - ./app/python:/app
+      - ./app/results.txt:/app/results.txt
     working_dir: /app
     command: ["python", "main.py"]
 
@@ -30,6 +31,7 @@ services:
     container_name: ruby_app
     volumes:
       - ./app/ruby:/app
+      - ./app/results.txt:/app/results.txt
     working_dir: /app
     command: ["ruby", "main.rb"]
 
@@ -38,6 +40,14 @@ services:
     container_name: c_app
     volumes:
       - ./app/c:/app
+      - ./app/results.txt:/app/results.txt
     working_dir: /app
     command: ["/bin/sh", "-c", "gcc main.c -o main && ./main"]
+
+  aggregator:
+    image: busybox
+    container_name: aggregator
+    volumes:
+      - ./app/results.txt:/app/results.txt
+    command: ["sh", "-c", "cat /app/results.txt"]
 
