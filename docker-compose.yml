@@ -9,13 +9,14 @@ services:
     working_dir: /app
     command: ["node", "main.js"]
 
-  java:
-    image: openjdk:17
-    container_name: java_app
-    volumes:
-      - ./app/java:/app
+  typescript:
+    image: node:latest
+    container_name: ts_app
     working_dir: /app
-    command: ["javac", "Main.java", "&&", "java", "Main"]
+    volumes:
+      - ./app/typescript:/app
+    command: >
+      sh -c "npm install -g typescript && tsc main.ts && node main.js"
 
   python:
     image: python:3.11
