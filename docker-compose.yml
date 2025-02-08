@@ -8,15 +8,15 @@ services:
     working_dir: /app
     command: sh -c "node main.js > /outputs/javascript_output.txt"
 
-  typescript:
-    image: node:18
-    container_name: ts_app
+  elixir:
+    image: elixir:latest
+    container_name: elixir_app
     volumes:
       - ./outputs:/outputs
-      - ./app/typescript:/app
+      - ./app/elixir:/app
     working_dir: /app
-    command: sh -c "npm install && npm run build && node dist/main.js > /outputs/typescript_output.txt"
-
+    command: ["sh", "-c", "elixir main.exs > /outputs/elixir_output.txt"]
+    
   python:
     image: python:3.11
     container_name: python_app
