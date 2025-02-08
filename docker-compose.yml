@@ -16,7 +16,7 @@ services:
       - ./app/typescript:/app
     working_dir: /app
     command: >
-      sh -c "npm install -g typescript && tsc && node main.js > /outputs/typescript_output.txt"
+      sh -c "npm install -g typescript && tsc main.ts && node main.js > /outputs/typescript_output.txt"
 
   python:
     image: python:3.11
@@ -25,7 +25,7 @@ services:
       - ./outputs:/outputs
       - ./app/python:/app
     working_dir: /app
-    command: ["sh", "-c", "pip install -r requirements.txt && python main.py > /outputs/python_output.txt"]
+    command: ["sh", "-c", "python main.py > /outputs/python_output.txt"]
 
   ruby:
     image: ruby:3.2
@@ -34,7 +34,7 @@ services:
       - ./outputs:/outputs
       - ./app/ruby:/app
     working_dir: /app
-    command: ["sh", "-c", "bundle install && ruby main.rb > /outputs/ruby_output.txt"]
+    command: ["sh", "-c", "ruby main.rb > /outputs/ruby_output.txt"]
 
   c:
     image: gcc:latest
@@ -43,7 +43,7 @@ services:
       - ./outputs:/outputs
       - ./app/c:/app
     working_dir: /app
-    command: ["/bin/sh", "-c", "gcc -O3 main.c -o main && ./main > /outputs/c_output.txt"]
+    command: ["/bin/sh", "-c", "gcc main.c -o main && ./main > /outputs/c_output.txt"]
 
 
 
