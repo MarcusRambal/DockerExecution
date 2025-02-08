@@ -16,7 +16,8 @@ services:
       - ./app/typescript:/app
     working_dir: /app
     command: >
-      sh -c "npm install -g typescript && tsc main.ts && node main.js > /outputs/typescript_output.txt"
+      sh -c "npm install && npm install -g typescript @types/node &&
+             tsc --project tsconfig.json && node main.js > /outputs/typescript_output.txt"
 
   python:
     image: python:3.11
