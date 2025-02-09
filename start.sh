@@ -17,7 +17,7 @@ fi
 echo "Iniciando los contenedores..."
 docker-compose up --build
 
-sleep 2
+sleep 10
 
 echo -e "\n======= RESULTADOS ======="
 echo -e " Lenguaje    |  Tiempo (ms) "
