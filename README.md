@@ -9,7 +9,7 @@
 ## Integrantes
 
  -Gabriel Palencia
- -Marcus Rambal
+  -Marcus Rambal
  
 ## Repositorio Scripts
  - https://github.com/MarcusRambal/DockerScripts.git
