@@ -8,9 +8,9 @@
 
 ## Integrantes
 
- -Gabriel Palencia
+ -Gabriel Elias Palencia Cure (200180307)
   
- -Marcus Rambal
+ -Marcus Rambal Preston (200179191)
  
 ## Repositorio Scripts
  - https://github.com/MarcusRambal/DockerScripts.git
