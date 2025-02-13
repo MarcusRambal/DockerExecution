@@ -5,3 +5,12 @@
 - cd DockerExecution
 - chmod +x start.sh
 - ./start.sh
+
+ ## Integrantes
+
+ -Gabriel Palencia
+ -Marcus Rambal
+
+ ##Repositorio Scripts
+ - https://github.com/MarcusRambal/DockerScripts.git
+ 
