@@ -6,11 +6,11 @@
 - chmod +x start.sh
 - ./start.sh
 
- ## Integrantes
+## Integrantes
 
  -Gabriel Palencia
  -Marcus Rambal
-
- ##Repositorio Scripts
+ 
+## Repositorio Scripts
  - https://github.com/MarcusRambal/DockerScripts.git
  
